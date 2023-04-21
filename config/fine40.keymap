@@ -10,30 +10,36 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 
+#define DEFAULT 0
+#define RIGHT   1
+#define LEFT	2
+#define CONTROL	3
+
+
 / {
 	keymap {
 		compatible = "zmk,keymap";
 
 		default_layer {
 			bindings = <
-				&kp ESC   &kp Q    &kp W    &kp E    &kp R &kp T     &kp Y       &kp U     &kp I     &kp O     &kp P     &kp BSPC
-				&lt 3 TAB &kp A    &kp S    &kp D    &kp F &kp G     &kp H       &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
-				&kp LSHFT &kp Z    &kp X    &kp C    &kp V &kp B     &kp N       &kp M     &kp COMMA &kp DOT   &kp FSLH  &kp RET
-				&kp LCTL  &kp LGUI &kp LALT &kp BSLH &mo 2 &kp SPACE &lt 1 SPACE &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp C_PP
+				&kp ESC		&kp Q		&kp W		&kp E		&kp R		&kp T	&kp Y			&kp U		&kp I		&kp O	&kp P		&kp BSPC
+				&kp TAB		&kp A		&kp S		&kp D		&kp F		&kp G	&kp H			&kp J		&kp K		&kp L	&kp SEMI	&kp SQT
+				&kp LSHFT	&kp Z		&kp X		&kp C		&kp V		&kp B	&kp N			&kp M		&kp COMMA	&kp DOT	&kp FSLH	&kp RET
+				&kp LCTL	&kp LGUI	&kp LALT	&mo CONTROL	&mo LEFT	&none	&lt RIGHT SPACE	&kp LEFT	&kp DOWN	&kp UP	&kp RIGHT	&kp C_PP
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 		};
 
 		// Layer 1
-		// Long Tap of Right 2u Key (Space Bar)!@#$123
+		// Long Tap of Right 2u Key (Space Bar)
 		// @see https://zmk.dev/docs/behaviors/layers#layer-tap
 		right {
 			bindings = <
-				&kp LS(GRAVE) &kp LS(N1) &kp LS(N2) &kp LS(N3) &kp LS(N4) &kp LS(N5) &kp LS(N6) &kp LS(N7) &kp LS(N8)    &kp LS(N9)   &kp LS(N0) &kp DEL
-				&trans        &trans 	 &trans     &trans     &trans     &trans     &trans     &kp MINUS  &kp EQUAL     &kp LBKT     &kp RBKT   &trans
-				&trans        &trans     &trans     &trans     &trans     &trans     &trans     &trans     &kp LS(COMMA) &kp LS(DOT)  &trans     &trans
-				&trans        &trans     &trans     &trans     &trans     &trans     &trans     &kp C_MUTE &kp C_VOL_DN  &kp C_VOL_UP &kp C_PP   &trans
+				&kp LS(GRAVE)	&kp LS(N1)	&kp LS(N2)	&kp LS(N3)	&kp LS(N4)	&kp LS(N5)	&kp LS(N6)	&kp LS(N7)	&kp LS(N8)		&kp LS(N9)		&kp LS(N0)	&kp DEL
+				&trans			&trans 		&trans		&trans		&trans		&trans		&trans		&kp MINUS	&kp EQUAL		&kp LBKT		&kp RBKT	&BSLH
+				&trans			&trans		&trans		&trans		&trans		&trans		&trans		&trans		&kp LS(COMMA)	&kp LS(DOT)		&trans		&trans
+				&trans			&trans		&trans		&trans		&trans		&trans		&trans		&kp C_MUTE	&kp C_VOL_DN	&kp C_VOL_UP	&kp C_PP	&trans
 			>;
 		};
 
@@ -42,10 +48,10 @@
 		// @see https://zmk.dev/docs/behaviors/layers#momentary-layer
 		left {
 			bindings = <
-				&kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7    &kp N8    &kp N9    &kp N0   &kp BSPC
-				&trans    &trans &trans &trans &trans &trans &trans &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &trans
-				&trans    &trans &trans &trans &trans &trans &trans &trans    &trans    &trans    &trans   &trans
-				&trans    &trans &trans &trans &trans &trans &trans &kp HOME  &kp PG_DN &kp PG_UP &kp END  &trans
+				&kp GRAVE	&kp N1	&kp N2	&kp N3	&kp N4	&kp N5	&kp N6	&kp N7		&kp N8		&kp N9		&kp N0		&kp BSPC
+				&trans		&trans	&trans	&trans	&trans	&trans	&trans	&kp UNDER	&kp PLUS	&kp LBRC	&kp RBRC	&PIPE
+				&trans		&trans	&trans	&trans	&trans	&trans	&trans	&trans		&trans		&trans		&trans		&trans
+				&trans		&trans	&trans	&trans	&trans	&trans	&trans	&kp HOME	&kp PG_DN	&kp PG_UP	&kp END		&trans
 			>;
 		};
 
@@ -54,11 +60,13 @@
 		// @see https://zmk.dev/docs/behaviors/layers#layer-tap
 		control {
 			bindings = <
-				&sys_reset &bootloader &bt BT_CLR &bt BT_PRV &bt BT_NXT &trans  &trans  &trans  &trans  &trans  &trans  &trans
-				&trans     &kp F11     &kp F12    &kp F13    &kp F14    &kp F15 &kp F16 &kp F17 &kp F18 &kp F19 &kp F20 &trans
-				&trans     &kp F1      &kp F2     &kp F3     &kp F4     &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10 &trans
-				&trans     &trans      &trans     &trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &ext_power EP_ON
+				&kp F1		&kp F2	   	&kp F3		&kp F4	&kp F5	&kp F6	&kp F7		&kp F8  	&pk F9  	&kp F10  	&kp F11	&kp F12
+				&none		&none	   	&none		&none	&none	&none 	&bt BT_PRV	&bl BL_DEC	&bl BL_INC	&bt BT_NXT	&none 	&none
+				&none		&none		&none		&none	&none	&none	&none		&none 		&none  		&none		&none	&none
+				&sys_reset	&bootloader	&bt BT_CLR	&none	&none	&none	&none		&none  		&none  		&none		&none	&bl BL_TOG
 			>;
+
+			sensor-bindings = <&inc_dec_kp BL_INC BL_DEC>;
 		};
 	};
 };
