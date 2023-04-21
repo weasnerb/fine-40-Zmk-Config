@@ -10,22 +10,16 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 
-#define DEFAULT 	0
-#define RIGHT_L		1
-#define LEFT_L		2
-#define CONTROL_L	3
-
-
 / {
 	keymap {
 		compatible = "zmk,keymap";
 
 		default_layer {
 			bindings = <
-				&kp ESC		&kp Q		&kp W		&kp E			&kp R		&kp T	&kp Y				&kp U		&kp I		&kp O	&kp P		&kp BSPC
-				&kp TAB		&kp A		&kp S		&kp D			&kp F		&kp G	&kp H				&kp J		&kp K		&kp L	&kp SEMI	&kp SQT
-				&kp LSHFT	&kp Z		&kp X		&kp C			&kp V		&kp B	&kp N				&kp M		&kp COMMA	&kp DOT	&kp FSLH	&kp RET
-				&kp LCTL	&kp LGUI	&kp LALT	&mo CONTROL_L	&mo LEFT_L	&none	&lt RIGHT_L SPACE	&kp LEFT	&kp DOWN	&kp UP	&kp RIGHT	&kp C_PP
+				&kp ESC		&kp Q		&kp W		&kp E	&kp R	&kp T	&kp Y		&kp U		&kp I		&kp O	&kp P		&kp BSPC
+				&kp TAB		&kp A		&kp S		&kp D	&kp F	&kp G	&kp H		&kp J		&kp K		&kp L	&kp SEMI	&kp SQT
+				&kp LSHFT	&kp Z		&kp X		&kp C	&kp V	&kp B	&kp N		&kp M		&kp COMMA	&kp DOT	&kp FSLH	&kp RET
+				&kp LCTL	&kp LGUI	&kp LALT	&mo 3	&mo 1	&none	&lt 2 SPACE	&kp LEFT	&kp DOWN	&kp UP	&kp RIGHT	&kp C_PP
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
