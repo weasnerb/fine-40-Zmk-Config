@@ -54,13 +54,13 @@
 		// @see https://zmk.dev/docs/behaviors/layers#layer-tap
 		control {
 			bindings = <
-				&kp F1		&kp F2		&kp F3	&kp F4	&kp F5	&kp F6	&kp F7		&kp F8		&kp F9			&kp F10			&kp F11		&kp F12
-				&none		&none		&none	&none	&none	&none 	&kp LEFT	&kp DOWN	&kp UP			&kp RIGHT		&none		&none
-				&none		&none		&none	&none	&none	&none	&none		&none		&none			&none			&none		&none
-				&sys_reset	&bootloader	&none	&trans	&none	&none	&none		&kp C_MUTE	&kp C_VOL_DN	&kp C_VOL_UP	&kp C_PP	&bt BT_CLR
+				&kp F1		&kp F2		&kp F3	&kp F4		&kp F5	&kp F6	&kp F7		&kp F8		&kp F9			&kp F10			&kp F11		&kp F12
+				&none		&bt BT_PRV	&none	&bt BT_NXT	&none	&none 	&kp LEFT	&kp DOWN	&kp UP			&kp RIGHT		&none		&none
+				&none		&none		&none	&none		&none	&none	&none		&none		&none			&none			&none		&none
+				&sys_reset	&bootloader	&none	&trans		&none	&none	&none		&kp C_MUTE	&kp C_VOL_DN	&kp C_VOL_UP	&kp C_PP	&bt BT_CLR
 			>;
 
-			sensor-bindings = <&inc_dec_kp BT_PRV BT_NXT>;
+			//sensor-bindings = <&inc_dec_kp BT_PRV BT_NXT>;
 		};
 	};
 };
