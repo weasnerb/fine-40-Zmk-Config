@@ -12,7 +12,7 @@
 
 / {
 	keymap {
-		compatible = "zmk,keymap,keymap-sensors";
+		compatible = "zmk,keymap-sensors";
 
 		default_layer {
 			bindings = <
