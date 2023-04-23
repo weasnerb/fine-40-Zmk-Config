@@ -13,11 +13,11 @@
 / {
 
 	behaviors {
-        rot_kp: behavior_sensor_rotate_kp {
-            compatible = "zmk,behavior-sensor-rotate-var";
-            label = "ENC_KP";
-            sensor-binding-cells = <2>;
-            bindings = <&kp>, <&kp>;
+		bt_encoder: bt_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "BT_ENCODER";
+            #sensor-binding-cells = <0>;
+            bindings = <&bt BT_PRV>, <&bt BT_NXT>;
         };
     };
 
@@ -32,7 +32,7 @@
 				&kp LCTL	&kp LGUI	&kp LALT	&mo 3	&mo 1	&none	&lt 2 SPACE	&kp LEFT	&kp DOWN	&kp UP	&kp RIGHT	&kp C_PP
 			>;
 
-			sensor-bindings = <&rot_kp C_VOL_UP C_VOL_DN>;
+			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 		};
 
 		// Layer 1
@@ -70,7 +70,7 @@
 				&sys_reset	&bootloader	&none	&trans		&none	&none	&none		&kp C_MUTE	&kp C_VOL_DN	&kp C_VOL_UP	&kp C_PP	&bt BT_CLR
 			>;
 
-			sensor-bindings = <&rot_kp BT_PRV BT_NXT>;
+			sensor-bindings = <&bt_encoder>;
 		};
 	};
 };
