@@ -1,7 +1,7 @@
-if SHIELD_fine40
+if SHIELD_mochi
 
 config ZMK_KEYBOARD_NAME
-    default "fine!40"
+    default "Mochi!"
 
 config I2C
 	default y

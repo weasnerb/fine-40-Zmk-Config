@@ -1,6 +1,6 @@
 file_format: "1"
-id: fine40rev1
-name: fine!40
+id: mochirev1
+name: mochi
 type: shield
 url: https://github.com/weasnerb/fine-40-Zmk-Config
 requires: [pro_micro]
